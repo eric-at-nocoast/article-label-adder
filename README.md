@@ -41,7 +41,11 @@ git clone https://github.com/eric-at-zd/article-label-adder
 npm install
 ```
 
-3. Run the app. Unless otherwise specified, this will open on localhost:5000
+3. Copy the .env.example file into an .env
+
+4. Replace placeholder values with one's relevant to your account 
+
+5. Run the app. Unless otherwise specified, this will open on localhost:5000
 
 ```
 npm run start

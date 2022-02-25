@@ -20,18 +20,19 @@ let config = {
 //If it does, then based off that checks the labels attached to the article to see if any of them matches the user_segment.
 //If the user_segment label is not present then it updates the article with it.
 const articleUpdater = async (article, userSegments) => {
+  let articleId = JSON.stringify(article.id);
+  let labelArr = article.label_names;
+
   if (article.user_segment_id != null) {
     let segmentObj = userSegments.find(
       ({ id }) => id === article.user_segment_id
     );
 
     if (article.label_names.length > 0) {
-      let labelArr = article.label_names;
 
       let segmentLabel = article.label_names.find(
         (label) => label == segmentObj.user_type
       );
-      let articleId = JSON.stringify(article.id);
       let payload = {
         article: {
           label_names: labelArr,
@@ -55,7 +56,26 @@ const articleUpdater = async (article, userSegments) => {
         return `Article ${articleId} already has the user segment label`;
       }
     }
-  } else return `Article ${article.id} has no user segment`;
+  }
+  //If there is no userSegment then the article will be tagged with 'public'
+  else {
+    labelArr.push('public')
+    let publicPayload = {
+      article: {
+        label_names: labelArr,
+      },
+    };
+
+    Object.assign(config, {
+      method: "put",
+      url:
+        process.env.ZD_URL +
+        `/api/v2/help_center/en-us/articles/${articleId}`,
+      data: publicPayload,
+    });
+    const response = await axios(config)
+    return `Article ${response.data.article.id} updated! with the label public`
+  };
 };
 
 const delay = (ms = 1000) => new Promise((r) => setTimeout(r, ms));

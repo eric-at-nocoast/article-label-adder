@@ -2,7 +2,7 @@
 
 <!-- Description of project-->
 
-This app loops through your articles and checks to see if they have a user_segment. If it does, then it will add a corresponding label to the article that can be used to filter the articles in the [mobile sdk](https://developer.zendesk.com/documentation/classic-web-widget-sdks/support-sdk/ios/help_center/#filter-articles-by-label)
+This app loops through your articles and checks to see if they have a user_segment. If it does, then it will add a corresponding label to the article and if it doesn't tags them as public.This can be used to filter the articles in the [mobile sdk](https://developer.zendesk.com/documentation/classic-web-widget-sdks/support-sdk/ios/help_center/#filter-articles-by-label)
 ​
 
 ​

@@ -2,10 +2,10 @@
   "name": "add-articles",
   "version": "1.0.0",
   "description": "A small script to update articles so that they have a label associated with the user_segment",
-  "main": "addLabel.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node addLabel.js"
+    "start": "node index.js"
   },
   "author": "",
   "license": "MIT",
